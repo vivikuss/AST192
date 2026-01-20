@@ -1,5 +1,5 @@
 # AST192
-# git workflow
+# workflow
 check if installed:
 git --version
 
@@ -13,13 +13,20 @@ git switch main
 git pull
 git checkout -b <name of your new branch>
 
+install/update the conda environment (first time or if the were changes):
+conda-lock install --name ast192
+
 before starting any work:
+conda activate ast192
 git switch main
 git pull
 git switch <name of branch>
 
 ALWAYS CHECK BRANCH BEFORE EDITING (NEVER WORK ON main)
 git branch
+
+DON'T RUN CONDA INSTALL / PIP INSTALL INSIDE ast192, INSTEAD OPEN A PULL REQUEST / AN ISSUE ON GITHUB
+this way, everyone stays in the same environment
 
 after working on code:
 git status
