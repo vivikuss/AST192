@@ -1,7 +1,7 @@
 # AST192
 # git workflow
 check if installed:
-git —version
+git --version
 
 clone repository (only first time):
 cd <destination>
