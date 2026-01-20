@@ -13,17 +13,17 @@
 version: 1
 metadata:
   content_hash:
-    linux-64: 0ef04a42fbf4ffcd9274883384a0000d700340b83096c9383fd1cefdd10a0d3c
-    osx-arm64: 013ddae440743fd0612a4e540450d821183e1e0f8d3e4ad94ee7fa903600188b
-    osx-64: ce38817d7fc4ddc8b839a6bb5ad0333a8d16eb574959396d29fab1e51d3a7f47
-    win-64: 486c9d9defc209a5a8a87e42e19fe66ec486aa8233599104f98b943b04c1715b
+    linux-64: 3466e38bd69679bd9075029f5b68c9dfa80bf3b66725171380e9abb8b873ad8c
+    osx-arm64: 8248b36e947e29e06f5a0b647db85b95ab4f4f16ae553bad016fde333c5d0854
+    osx-64: d3dd3999d7c103f7219dd189bc8aae67d4fa929882d3e57806efcc6c32a40864
+    win-64: 628f30611f1fc1bc0b46f74a4b647e5ed3133302122c08691cabbe4ff3b73e79
   channels:
   - url: conda-forge
     used_env_vars: []
   platforms:
   - linux-64
-  - osx-arm64
   - osx-64
+  - osx-arm64
   - win-64
   sources:
   - environment.yaml
@@ -493,51 +493,51 @@ package:
   category: main
   optional: false
 - name: astropy-iers-data
-  version: 0.2026.1.12.0.42.13
+  version: 0.2026.1.19.0.42.31
   manager: conda
   platform: linux-64
   dependencies:
     python: '>=3.10'
-  url: https://conda.anaconda.org/conda-forge/noarch/astropy-iers-data-0.2026.1.12.0.42.13-pyhd8ed1ab_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/astropy-iers-data-0.2026.1.19.0.42.31-pyhd8ed1ab_0.conda
   hash:
-    md5: 95a17cd01ed2311ac50a053b9144bb94
-    sha256: f68021ef9f53c051bbc6b32a812119fc5c965546555d4f45d37e4f6e9a9fff18
+    md5: a55d87046fdd0cf91bada8be7300f44e
+    sha256: 0b9282eaff676678bb629534988735a0d63a523461f7396d2cf3186f8f7076f5
   category: main
   optional: false
 - name: astropy-iers-data
-  version: 0.2026.1.12.0.42.13
+  version: 0.2026.1.19.0.42.31
   manager: conda
   platform: osx-64
   dependencies:
     python: '>=3.10'
-  url: https://conda.anaconda.org/conda-forge/noarch/astropy-iers-data-0.2026.1.12.0.42.13-pyhd8ed1ab_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/astropy-iers-data-0.2026.1.19.0.42.31-pyhd8ed1ab_0.conda
   hash:
-    md5: 95a17cd01ed2311ac50a053b9144bb94
-    sha256: f68021ef9f53c051bbc6b32a812119fc5c965546555d4f45d37e4f6e9a9fff18
+    md5: a55d87046fdd0cf91bada8be7300f44e
+    sha256: 0b9282eaff676678bb629534988735a0d63a523461f7396d2cf3186f8f7076f5
   category: main
   optional: false
 - name: astropy-iers-data
-  version: 0.2026.1.12.0.42.13
+  version: 0.2026.1.19.0.42.31
   manager: conda
   platform: osx-arm64
   dependencies:
     python: '>=3.10'
-  url: https://conda.anaconda.org/conda-forge/noarch/astropy-iers-data-0.2026.1.12.0.42.13-pyhd8ed1ab_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/astropy-iers-data-0.2026.1.19.0.42.31-pyhd8ed1ab_0.conda
   hash:
-    md5: 95a17cd01ed2311ac50a053b9144bb94
-    sha256: f68021ef9f53c051bbc6b32a812119fc5c965546555d4f45d37e4f6e9a9fff18
+    md5: a55d87046fdd0cf91bada8be7300f44e
+    sha256: 0b9282eaff676678bb629534988735a0d63a523461f7396d2cf3186f8f7076f5
   category: main
   optional: false
 - name: astropy-iers-data
-  version: 0.2026.1.12.0.42.13
+  version: 0.2026.1.19.0.42.31
   manager: conda
   platform: win-64
   dependencies:
     python: '>=3.10'
-  url: https://conda.anaconda.org/conda-forge/noarch/astropy-iers-data-0.2026.1.12.0.42.13-pyhd8ed1ab_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/astropy-iers-data-0.2026.1.19.0.42.31-pyhd8ed1ab_0.conda
   hash:
-    md5: 95a17cd01ed2311ac50a053b9144bb94
-    sha256: f68021ef9f53c051bbc6b32a812119fc5c965546555d4f45d37e4f6e9a9fff18
+    md5: a55d87046fdd0cf91bada8be7300f44e
+    sha256: 0b9282eaff676678bb629534988735a0d63a523461f7396d2cf3186f8f7076f5
   category: main
   optional: false
 - name: astroquery
@@ -9550,6 +9550,62 @@ package:
     sha256: 6b8e35c2a41b1a46734d91da54a4db2c7926e7609ad5ca539e231e9a5e87079a
   category: main
   optional: false
+- name: pip
+  version: '25.3'
+  manager: conda
+  platform: linux-64
+  dependencies:
+    python: '>=3.10,<3.13.0a0'
+    setuptools: ''
+    wheel: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/pip-25.3-pyh8b19718_0.conda
+  hash:
+    md5: c55515ca43c6444d2572e0f0d93cb6b9
+    sha256: b67692da1c0084516ac1c9ada4d55eaf3c5891b54980f30f3f444541c2706f1e
+  category: main
+  optional: false
+- name: pip
+  version: '25.3'
+  manager: conda
+  platform: osx-64
+  dependencies:
+    python: '>=3.10,<3.13.0a0'
+    setuptools: ''
+    wheel: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/pip-25.3-pyh8b19718_0.conda
+  hash:
+    md5: c55515ca43c6444d2572e0f0d93cb6b9
+    sha256: b67692da1c0084516ac1c9ada4d55eaf3c5891b54980f30f3f444541c2706f1e
+  category: main
+  optional: false
+- name: pip
+  version: '25.3'
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    python: '>=3.10,<3.13.0a0'
+    setuptools: ''
+    wheel: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/pip-25.3-pyh8b19718_0.conda
+  hash:
+    md5: c55515ca43c6444d2572e0f0d93cb6b9
+    sha256: b67692da1c0084516ac1c9ada4d55eaf3c5891b54980f30f3f444541c2706f1e
+  category: main
+  optional: false
+- name: pip
+  version: '25.3'
+  manager: conda
+  platform: win-64
+  dependencies:
+    python: '>=3.10,<3.13.0a0'
+    setuptools: ''
+    wheel: ''
+  url: https://conda.anaconda.org/conda-forge/noarch/pip-25.3-pyh8b19718_0.conda
+  hash:
+    md5: c55515ca43c6444d2572e0f0d93cb6b9
+    sha256: b67692da1c0084516ac1c9ada4d55eaf3c5891b54980f30f3f444541c2706f1e
+  category: main
+  optional: false
 - name: pixman
   version: 0.46.4
   manager: conda
@@ -13069,6 +13125,54 @@ package:
     sha256: 42a2b61e393e61cdf75ced1f5f324a64af25f347d16c60b14117393a98656397
   category: main
   optional: false
+- name: wheel
+  version: 0.45.1
+  manager: conda
+  platform: linux-64
+  dependencies:
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/wheel-0.45.1-pyhd8ed1ab_1.conda
+  hash:
+    md5: 75cb7132eb58d97896e173ef12ac9986
+    sha256: 1b34021e815ff89a4d902d879c3bd2040bc1bd6169b32e9427497fa05c55f1ce
+  category: main
+  optional: false
+- name: wheel
+  version: 0.45.1
+  manager: conda
+  platform: osx-64
+  dependencies:
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/wheel-0.45.1-pyhd8ed1ab_1.conda
+  hash:
+    md5: 75cb7132eb58d97896e173ef12ac9986
+    sha256: 1b34021e815ff89a4d902d879c3bd2040bc1bd6169b32e9427497fa05c55f1ce
+  category: main
+  optional: false
+- name: wheel
+  version: 0.45.1
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/wheel-0.45.1-pyhd8ed1ab_1.conda
+  hash:
+    md5: 75cb7132eb58d97896e173ef12ac9986
+    sha256: 1b34021e815ff89a4d902d879c3bd2040bc1bd6169b32e9427497fa05c55f1ce
+  category: main
+  optional: false
+- name: wheel
+  version: 0.45.1
+  manager: conda
+  platform: win-64
+  dependencies:
+    python: '>=3.9'
+  url: https://conda.anaconda.org/conda-forge/noarch/wheel-0.45.1-pyhd8ed1ab_1.conda
+  hash:
+    md5: 75cb7132eb58d97896e173ef12ac9986
+    sha256: 1b34021e815ff89a4d902d879c3bd2040bc1bd6169b32e9427497fa05c55f1ce
+  category: main
+  optional: false
 - name: widgetsnbextension
   version: 4.0.15
   manager: conda
@@ -13849,5 +13953,145 @@ package:
   hash:
     md5: 053b84beec00b71ea8ff7a4f84b55207
     sha256: 368d8628424966fd8f9c8018326a9c779e06913dd39e646cf331226acc90e5b2
+  category: main
+  optional: false
+- name: llvmlite
+  version: 0.46.0
+  manager: pip
+  platform: linux-64
+  dependencies: {}
+  url: https://files.pythonhosted.org/packages/c2/a5/a4d916f1015106e1da876028606a8e87fd5d5c840f98c87bc2d5153b6a2f/llvmlite-0.46.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+  hash:
+    sha256: 0a2d461cb89537b7c20feb04c46c32e12d5ad4f0896c9dfc0f60336219ff248e
+  category: main
+  optional: false
+- name: llvmlite
+  version: 0.46.0
+  manager: pip
+  platform: osx-64
+  dependencies: {}
+  url: https://files.pythonhosted.org/packages/74/cd/08ae687ba099c7e3d21fe2ea536500563ef1943c5105bf6ab4ee3829f68e/llvmlite-0.46.0.tar.gz
+  hash:
+    sha256: 227c9fd6d09dce2783c18b754b7cd9d9b3b3515210c46acc2d3c5badd9870ceb
+  category: main
+  optional: false
+- name: llvmlite
+  version: 0.46.0
+  manager: pip
+  platform: osx-arm64
+  dependencies: {}
+  url: https://files.pythonhosted.org/packages/3d/a4/3959e1c61c5ca9db7921e5fd115b344c29b9d57a5dadd87bef97963ca1a5/llvmlite-0.46.0-cp310-cp310-macosx_11_0_arm64.whl
+  hash:
+    sha256: 4323177e936d61ae0f73e653e2e614284d97d14d5dd12579adc92b6c2b0597b0
+  category: main
+  optional: false
+- name: llvmlite
+  version: 0.46.0
+  manager: pip
+  platform: win-64
+  dependencies: {}
+  url: https://files.pythonhosted.org/packages/b2/bc/4689e1ba0c073c196b594471eb21be0aa51d9e64b911728aa13cd85ef0ae/llvmlite-0.46.0-cp310-cp310-win_amd64.whl
+  hash:
+    sha256: e7a34d4aa6f9a97ee006b504be6d2b8cb7f755b80ab2f344dda1ef992f828559
+  category: main
+  optional: false
+- name: numba
+  version: 0.63.1
+  manager: pip
+  platform: linux-64
+  dependencies:
+    llvmlite: ==0.46.*
+    numpy: '>=1.22,<2.4'
+  url: https://files.pythonhosted.org/packages/0f/72/a8bda517e26d912633b32626333339b7c769ea73a5c688365ea5f88fd07e/numba-0.63.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+  hash:
+    sha256: 08653d0dfc9cc9c4c9a8fba29ceb1f2d5340c3b86c4a7e5e07e42b643bc6a2f4
+  category: main
+  optional: false
+- name: numba
+  version: 0.63.1
+  manager: pip
+  platform: osx-64
+  dependencies:
+    llvmlite: ==0.46.*
+    numpy: '>=1.22,<2.4'
+  url: https://files.pythonhosted.org/packages/dc/60/0145d479b2209bd8fdae5f44201eceb8ce5a23e0ed54c71f57db24618665/numba-0.63.1.tar.gz
+  hash:
+    sha256: b320aa675d0e3b17b40364935ea52a7b1c670c9037c39cf92c49502a75902f4b
+  category: main
+  optional: false
+- name: numba
+  version: 0.63.1
+  manager: pip
+  platform: osx-arm64
+  dependencies:
+    llvmlite: ==0.46.*
+    numpy: '>=1.22,<2.4'
+  url: https://files.pythonhosted.org/packages/5e/ce/5283d4ffa568f795bb0fd61ee1f0efc0c6094b94209259167fc8d4276bde/numba-0.63.1-cp310-cp310-macosx_11_0_arm64.whl
+  hash:
+    sha256: c6d6bf5bf00f7db629305caaec82a2ffb8abe2bf45eaad0d0738dc7de4113779
+  category: main
+  optional: false
+- name: numba
+  version: 0.63.1
+  manager: pip
+  platform: win-64
+  dependencies:
+    llvmlite: ==0.46.*
+    numpy: '>=1.22,<2.4'
+  url: https://files.pythonhosted.org/packages/b4/77/703db56c3061e9fdad5e79c91452947fdeb2ec0bdfe4affe9b144e7025e0/numba-0.63.1-cp310-cp310-win_amd64.whl
+  hash:
+    sha256: f8bba17421d865d8c0f7be2142754ebce53e009daba41c44cf6909207d1a8d7d
+  category: main
+  optional: false
+- name: wotan
+  version: '1.10'
+  manager: pip
+  platform: linux-64
+  dependencies:
+    numba: '*'
+    numpy: '*'
+    scipy: '*'
+  url: https://files.pythonhosted.org/packages/e6/ad/4b3c4a2d3216bc4e54422dc49fd96cfd2bcb0dc6c9ea6dc98667976ea882/wotan-1.10-py3-none-any.whl
+  hash:
+    sha256: a256aafd01d0980920986e5af00a8d90c8004cba71037b63beaef925fc777d1d
+  category: main
+  optional: false
+- name: wotan
+  version: '1.10'
+  manager: pip
+  platform: osx-64
+  dependencies:
+    numba: '*'
+    numpy: '*'
+    scipy: '*'
+  url: https://files.pythonhosted.org/packages/e6/ad/4b3c4a2d3216bc4e54422dc49fd96cfd2bcb0dc6c9ea6dc98667976ea882/wotan-1.10-py3-none-any.whl
+  hash:
+    sha256: a256aafd01d0980920986e5af00a8d90c8004cba71037b63beaef925fc777d1d
+  category: main
+  optional: false
+- name: wotan
+  version: '1.10'
+  manager: pip
+  platform: osx-arm64
+  dependencies:
+    numba: '*'
+    numpy: '*'
+    scipy: '*'
+  url: https://files.pythonhosted.org/packages/e6/ad/4b3c4a2d3216bc4e54422dc49fd96cfd2bcb0dc6c9ea6dc98667976ea882/wotan-1.10-py3-none-any.whl
+  hash:
+    sha256: a256aafd01d0980920986e5af00a8d90c8004cba71037b63beaef925fc777d1d
+  category: main
+  optional: false
+- name: wotan
+  version: '1.10'
+  manager: pip
+  platform: win-64
+  dependencies:
+    numba: '*'
+    numpy: '*'
+    scipy: '*'
+  url: https://files.pythonhosted.org/packages/e6/ad/4b3c4a2d3216bc4e54422dc49fd96cfd2bcb0dc6c9ea6dc98667976ea882/wotan-1.10-py3-none-any.whl
+  hash:
+    sha256: a256aafd01d0980920986e5af00a8d90c8004cba71037b63beaef925fc777d1d
   category: main
   optional: false

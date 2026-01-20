@@ -11,4 +11,6 @@ dependencies:
   - ipykernel
   - lightkurve
   - astropy
-  - wotan
+  - pip
+  - pip:
+      - wotan
