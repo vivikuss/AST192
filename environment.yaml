@@ -1,0 +1,13 @@
+name: ast192
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - jupyter
+  - ipykernel
+  - lightkurve
+  - astropy
