@@ -11,6 +11,10 @@ dependencies:
   - ipykernel
   - lightkurve
   - astropy
+  - tabulate
+  - tqdm 
+  - astroquery
+  - seaborn
   - pip
   - pip:
       - wotan
