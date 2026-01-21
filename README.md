@@ -38,3 +38,9 @@ git push -u origin <name of branch>
 
 push every other time:
 git push
+
+create pull request:
+brew install gh
+gh auth login
+gh pr create
+
