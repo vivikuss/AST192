@@ -74,7 +74,7 @@ def instability_strip(tic_names, bp_rp_primaries, abs_magn_primaries, st):
             continue
         if abs_magn_primaries[j] > 5.0:
             continue
-        s = tic_names[st+j]
+        s = tic_names[j]
         obj_tic = "TIC " + str(s)
         tpf = search_targetpixelfile(obj_tic, mission = name, author='SPOC')
         if(len(tpf)==0):
@@ -177,7 +177,7 @@ name = 'TESS'
 savefiles = False
 path = "WD_Binaries_HUGE.csv"
 df = pd.read_csv(path)
-st = 0#15000
+st = 0#15000  ### early stop
 #print(df.columns.to_series())
 
 tic_names = df['TIC_1'].tolist()
