@@ -8,7 +8,6 @@ import tabulate
 from tqdm import tqdm
 import matplotlib.cm as cm
 import pandas as pd
-from astroquery.gaia import Gaia
 from astropy.table import Table
 import re
 import tempfile
@@ -50,42 +49,6 @@ def download_sections(t,wanted):
             tpfs.append(downloaded_tpf)
 
     return tpfs
-
-def gaia_epoch_time_flux_arrays(source_id, band=None, valid_only=True):
-    data = Gaia.load_data(
-        ids=[int(source_id)],
-        data_release="Gaia DR3",
-        retrieval_type="EPOCH_PHOTOMETRY",
-        data_structure="INDIVIDUAL",
-        valid_data=valid_only
-    )
-
-    time, flux = None, None
-
-    for _, items in data.items():
-        for t in items:
-            if hasattr(t, "colnames"):
-                tab = t
-            elif hasattr(t, "to_table"):
-                tab = t.to_table()
-            else:
-                continue
-
-            cols_lower = {c.lower(): c for c in tab.colnames}
-
-            # Require time + flux columns
-            if "time" in cols_lower and "flux" in cols_lower:
-                t_arr = np.array(tab[cols_lower["time"]])
-                f_arr = np.array(tab[cols_lower["flux"]])
-                m = np.isfinite(t_arr) & np.isfinite(f_arr)
-                if m.any():
-                    time = t_arr[m] if time is None else np.concatenate([time, t_arr[m]])
-                    flux = f_arr[m] if flux is None else np.concatenate([flux, f_arr[m]])
-
-    if time is None or flux is None:
-        print("No epoch-photometry table with 'time' and 'flux' found for this source.")
-
-    return time, flux
 
 def read_data_from_file(path):
     obj_with_data_inst, bp_rp_with_data_inst, abs_magn_with_data_inst = [], [], []
@@ -272,26 +235,6 @@ for h,string_id in enumerate(num_shortlist):
 num_shortlist = np.array(num_shortlist)
 tic_shortlist = np.array(tic_shortlist)
 
-## save data of identified objects to file ###
-# headers = ['TIC', 'BP_RP', 'abs M']
-# data_table = list(zip(tic_shortlist, bp_rp_shortlist, abs_magn_shortlist))
-# print(tabulate.tabulate(data_table, headers=headers))
-# tabletable = tabulate.tabulate(data_table, headers=headers)
-# tablenoheader = tabulate.tabulate(data_table, headers=[])
-
-# file_name = f"shortlist_favs_bp_rp_absM.dat"
-# with open(file_name, "w") as f: 
-#     f.write(tabletable)
-
-# exit()
-
-# if os.path.exists(file_name) and os.path.getsize(file_name) > 0:
-#     with open(file_name, "a") as f:
-#         f.write("\n" + tablenoheader + "\n")
-# else:
-#     with open(file_name, "w") as f:
-#         f.write(tabletable)
-
 for id in tic_shortlist:
     fig, axs = plt.subplots(1, 3, figsize=(13, 4), constrained_layout=True)
     plot_candidate(axs[0], tic_shortlist, bp_rp_primaries, bp_rp_secondaries, bp_rp_shortlist, abs_magn_primaries, abs_magn_secondaries, abs_magn_shortlist, id)
@@ -337,51 +280,3 @@ for id in tic_shortlist:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# obj_with_data = ['TIC 255914801', 'TIC 93932740', 'TIC 55452212', 'TIC 456665580', 'TIC 374667777', 'TIC 1937220662', 'TIC 354618336', 
-#                  'TIC 98310624', 'TIC 91690128', 'TIC 336888038', 'TIC 415132299', 'TIC 404030766', 'TIC 304983676', 'TIC 441081542', 
-#                  'TIC 1992183294', 'TIC 211352586', 'TIC 211352467', 'TIC 367387165', 'TIC 418682332', 'TIC 2028514411', 'TIC 367556776', 
-#                  'TIC 2028522711', 'TIC 366892662', 'TIC 872810699', 'TIC 45553805', 'TIC 341702630']
-
-# obj_with_data_inst = ['TIC 444990418','TIC 352887512','TIC 120327342','TIC 279863970','TIC 417107796','TIC 708525186','TIC 453563374','TIC 290743451',
-#                       'TIC 399921132','TIC 368629942','TIC 640132960','TIC 399932134','TIC 620020027','TIC 387512345','TIC 365440104','TIC 743121625',
-#                       'TIC 735736638','TIC 141691168','TIC 387018680','TIC 459905621','TIC 397184602','TIC 156102810','TIC 137578521','TIC 150315935',
-#                       'TIC 223283142','TIC 272207124','TIC 270984318','TIC 460357600','TIC 237239866','TIC 419246853','TIC 764046552','TIC 57724463',
-#                       'TIC 718758307','TIC 289221133','TIC 279393935','TIC 163366312','TIC 55650170','TIC 416609117','TIC 449159029','TIC 418041426',
-#                       'TIC 119815236','TIC 393643560','TIC 141418070','TIC 119841498','TIC 459283586','TIC 1680825128','TIC 39729042','TIC 219183728',
-#                       'TIC 96614412','TIC 137851096']
-
-# obj_with_data_inst = ['TIC 399932134', 'TIC 397184602', 'TIC 223283142']
-
-# obj_with_data_inst = np.array(obj_with_data_inst)
-# idx = np.flatnonzero(obj_with_data_inst == 'TIC 329759640')
-# print(idx)
-
-# obj_with_data_inst = ['TIC 45553805', 'TIC 346706945']
-# tic_names = np.array(tic_names)
-# tic_secondaries = np.array(tic_secondaries)
-
-# print(tic_secondaries[np.flatnonzero(tic_names==45553805)], tic_secondaries[np.flatnonzero(tic_names==346706945)])
-# print(separation[np.flatnonzero(tic_names==45553805)], separation[np.flatnonzero(tic_names==346706945)])
-
-# plot_candidate(tic_secondaries, bp_rp_primaries, bp_rp_secondaries, bp_rp_secondaries, abs_magn_primaries, abs_magn_secondaries, abs_magn_secondaries, tic_candidate=tic_secondaries[np.flatnonzero(tic_names==45553805)])
-# plot_candidate(tic_secondaries, bp_rp_primaries, bp_rp_secondaries, bp_rp_secondaries, abs_magn_primaries, abs_magn_secondaries, abs_magn_secondaries, tic_candidate=tic_secondaries[np.flatnonzero(tic_names==346706945)])
