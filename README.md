@@ -21,6 +21,7 @@ conda activate ast192
 git switch main
 git pull
 git switch <name of branch>
+git merge main
 
 ALWAYS CHECK BRANCH BEFORE EDITING (NEVER WORK ON main)
 git branch
