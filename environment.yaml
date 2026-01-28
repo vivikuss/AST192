@@ -14,7 +14,9 @@ dependencies:
   - tabulate
   - tqdm 
   - astroquery
-  - seaborn
+  - seaborn1
+  - ipympl
+  - ipywidgets
   - pip
   - pip:
       - wotan
