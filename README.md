@@ -21,6 +21,7 @@ conda activate ast192
 git switch main
 git pull
 git switch <name of branch>
+git merge main
 
 ALWAYS CHECK BRANCH BEFORE EDITING (NEVER WORK ON main)
 git branch
@@ -38,3 +39,9 @@ git push -u origin <name of branch>
 
 push every other time:
 git push
+
+create pull request:
+brew install gh
+gh auth login
+gh pr create
+
