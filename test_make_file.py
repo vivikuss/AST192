@@ -177,7 +177,7 @@ name = 'TESS'
 savefiles = False
 path = "WD_Binaries_HUGE.csv"
 df = pd.read_csv(path)
-st = 0#15000  ### early stop
+st = 14000#15000  ### early stop
 #print(df.columns.to_series())
 
 tic_names = df['TIC_1'].tolist()
@@ -199,75 +199,5 @@ obj_with_data_inst = []
 bp_rp_with_data_inst = []
 abs_magn_with_data_inst = []
 
-### once shortlist has been made ###
-num_shortlist = []
-bp_rp_shortlist = []
-abs_magn_shortlist = []
-tic_shortlist = []
-
-with open("shortlist_obs.dat", "r") as f:
-        for i, line in enumerate(f):
-            if i < 2:      
-                continue
-            s = line.strip()
-            num_shortlist.append(s)
-
-obj_with_data_inst = np.array(obj_with_data_inst)
-bp_rp_with_data_inst = np.array(bp_rp_with_data_inst)
-abs_magn_with_data_inst = np.array(abs_magn_with_data_inst)
-
-tic_names = np.array(tic_names)
-
-for h,string_id in enumerate(num_shortlist):
-    string_tic = 'TIC ' + str(string_id)
-    tic_shortlist.append(string_tic)
-    bp_rp_shortlist.append(bp_rp_primaries[np.flatnonzero(tic_names == int(string_id))])
-    abs_magn_shortlist.append(abs_magn_primaries[np.flatnonzero(tic_names == int(string_id))])
-
-num_shortlist = np.array(num_shortlist)
-tic_shortlist = np.array(tic_shortlist)
-
-for id in tic_shortlist:
-    fig, axs = plt.subplots(1, 3, figsize=(13, 4), constrained_layout=True)
-    plot_candidate(axs[0], tic_shortlist, bp_rp_primaries, bp_rp_secondaries, bp_rp_shortlist, abs_magn_primaries, abs_magn_secondaries, abs_magn_shortlist, id)
-
-    tpf = search_targetpixelfile(id, mission = name, author='SPOC')
-    ### find different sections for object ###
-    wanted = list(tpf.table["sequence_number"][:5])
-    tpfs = download_sections(tpf, wanted)
-    cleaned_tpfs = []
-
-    ### download and clean lightcurves up ###
-    #for i,t in enumerate(tpfs):
-    #for i in range(len(tpfs)):
-    t = tpfs[0]
-    lightcurve = t.to_lightcurve(aperture_mask=t.pipeline_mask)
-    lc_clean = clean_tpf(lightcurve)
-    cleaned_tpfs.append(lc_clean)
-    #if(i==1):
-    axs[1].scatter(lc_clean.time.value, lc_clean.flux.value, color ='black', s=2)
-    axs[1].set_xlabel('Time [d]')
-    axs[1].set_ylabel(r'Flux [e $s^{-1}$]')
-    axs[1].set_title("Lightcurve")
-    axs[1].grid(True)
-            
-
-    coll = lk.LightCurveCollection(cleaned_tpfs)
-    lc_stitched = coll.stitch()
-
-    lc_detrend,_ = detrend(lc_stitched,window_length=1.5)
-    try:
-        pg = lc_detrend.to_periodogram(method='lombscargle', minimum_frequency=4, maximum_frequency=40)
-    except:
-        pg = lc_detrend.to_periodogram(method='lombscargle', minimum_frequency=0.5, maximum_frequency=20)
-    period_at_max_power = pg.period_at_max_power
-    axs[2].plot(pg.frequency, pg.power, color = 'black')
-    axs[2].set_xlabel("Frequency [1/d]")
-    axs[2].set_ylabel("Power")
-    axs[2].set_title(f"Period at max power: {period_at_max_power:.3f}")  
-
-    fig.suptitle(f'System {id}', fontsize=14)
-    fig.savefig(f"/Users/new/Desktop/{id}_HR_LC_PG.png",dpi=500)
-
-
-
+### find objects in instability strip with TESS data ###
+obj_with_data_inst, bp_rp_with_data_inst, abs_magn_with_data_inst = instability_strip(tic_names, bp_rp_primaries, abs_magn_primaries, st)

@@ -205,7 +205,7 @@ bp_rp_shortlist = []
 abs_magn_shortlist = []
 tic_shortlist = []
 
-with open("shortlist_obs.dat", "r") as f:
+with open("single_TIC.dat", "r") as f:
         for i, line in enumerate(f):
             if i < 2:      
                 continue
@@ -267,7 +267,7 @@ for id in tic_shortlist:
     axs[2].set_title(f"Period at max power: {period_at_max_power:.3f}")  
 
     fig.suptitle(f'System {id}', fontsize=14)
-    fig.savefig(f"/Users/new/Desktop/{id}_HR_LC_PG.png",dpi=500)
-
+    #fig.savefig(f"/Users/dakelasala/Desktop/AstResearch/Test Stars/{id}_HR_LC_PG.png",dpi=500)
+    plt.show()
 
 

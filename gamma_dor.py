@@ -177,7 +177,7 @@ name = 'TESS'
 savefiles = False
 path = "WD_Binaries_HUGE.csv"
 df = pd.read_csv(path)
-st = 0#15000  ### early stop
+st = 14500#15000  ### early stop
 #print(df.columns.to_series())
 
 tic_names = df['TIC_1'].tolist()
@@ -199,13 +199,46 @@ obj_with_data_inst = []
 bp_rp_with_data_inst = []
 abs_magn_with_data_inst = []
 
+### find objects in instability strip with TESS data ###
+#obj_with_data_inst, bp_rp_with_data_inst, abs_magn_with_data_inst = #instability_strip(tic_names, bp_rp_primaries, abs_magn_primaries, st)
+
+### read data from file ###
+#obj_with_data_inst, bp_rp_with_data_inst, abs_magn_with_data_inst = read_data_from_file(f"list_of_obj_in_inst_with_data_range_{st}_15000.dat")
+#eyeball_lightcurves(obj_with_data_inst, savefiles)
+#exit()
+
+input = f"list_of_obj_in_inst_with_data_range_{st}_15000.dat"
+output = "shortlist_obs.dat"
+
+tic_ids = []
+
+with open(input, "r") as f:
+    for i, line in enumerate(f):
+        #skip the first two lines
+        if i < 2:
+            continue
+        line = line.strip()
+        if not line:
+            continue
+        # line starts like: "TIC __ ___ __ "
+        match = re.match(r"TIC\s+(\d+)", line)
+        if match:
+            tic_ids.append(match.group(1))
+
+# write shortlist
+with open(output, "w") as f:
+    f.write("# shortlist\n")
+    f.write("# TIC IDs\n")
+    for tic in tic_ids:
+        f.write(tic + "\n")
+
 ### once shortlist has been made ###
 num_shortlist = []
 bp_rp_shortlist = []
 abs_magn_shortlist = []
 tic_shortlist = []
 
-with open("shortlist_obs.dat", "r") as f:
+with open("/Users/dakelasala/Desktop/AstResearch/AST192/shortlist_obs.dat", "r") as f:
         for i, line in enumerate(f):
             if i < 2:      
                 continue
@@ -267,7 +300,8 @@ for id in tic_shortlist:
     axs[2].set_title(f"Period at max power: {period_at_max_power:.3f}")  
 
     fig.suptitle(f'System {id}', fontsize=14)
-    fig.savefig(f"/Users/new/Desktop/{id}_HR_LC_PG.png",dpi=500)
+    fig.savefig(f"/Users/dakelasala/Desktop/AstResearch/Test Stars/{id}_HR_LC_PG.png",dpi=500)
+
 
 
 
